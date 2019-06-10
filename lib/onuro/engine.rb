@@ -16,6 +16,16 @@ class Onuro::Engine
     false
   end
 
+  def delete_event!(event_name)
+    @events.each do |event|
+      if event.name == event_name
+        @events.delete(event)
+        return true
+      end
+    end
+    raise Onuro::InvalidEventNameException
+  end
+
   def execute
     ['Still WIP']
   end

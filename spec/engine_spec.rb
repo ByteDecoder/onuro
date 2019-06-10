@@ -22,4 +22,20 @@ RSpec.describe Onuro::Engine do
       expect(engine.event?(:my_event)).to be_truthy
     end
   end
+
+  describe '.delete_event!' do
+    it 'executes successfully if the event_name exist' do
+      event = Onuro::Event.new(:my_event, [])
+      engine = Onuro::Engine.new
+      engine.add_event(event)
+      expect { engine.delete_event!(:my_event) }.to_not raise_error
+    end
+
+    it 'raises an exception if the event_name does not exist' do
+      engine = Onuro::Engine.new
+      expect do
+        engine.delete_event!(:my_event)
+      end.to raise_error(Onuro::InvalidEventNameException)
+    end
+  end
 end
