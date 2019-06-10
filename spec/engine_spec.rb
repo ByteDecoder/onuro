@@ -9,7 +9,7 @@ RSpec.describe Onuro::Engine do
     end
   end
 
-  describe '.has_event?' do
+  describe '.event?' do
     it 'should return false if event is not loaded in the engine' do
       engine = Onuro::Engine.new
       expect(engine.event?(:my_event)).to be_falsey
