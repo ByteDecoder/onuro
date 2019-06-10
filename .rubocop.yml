@@ -1,0 +1,11 @@
+Metrics/LineLength:
+  Max: 100
+
+Style/Documentation:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
