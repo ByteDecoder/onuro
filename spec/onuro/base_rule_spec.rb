@@ -6,7 +6,7 @@ require 'onuro'
 module Onuro
   RSpec.describe BaseRule do
     describe '.execute' do
-      it 'should return SUCCESS' do
+      it 'should return SUCCESSFUL' do
         result = BaseRule.new.execute
         expect(result).to eq(ExecutionResult::SUCCESSFUL)
       end
