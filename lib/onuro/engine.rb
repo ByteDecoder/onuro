@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'onuro/logging'
+
 class Onuro::Engine
+  include Onuro::Logging
+
   def initialize
     @events = []
   end
