@@ -5,27 +5,27 @@ require 'onuro/logging'
 class Onuro::Engine
   include Onuro::Logging
 
-  attr_reader :events
+  attr_accessor :events
 
   def initialize
-    @events = []
+    self.events = []
   end
 
   def add_event(event)
-    @events << event
+    events << event
   end
 
   def event?(event_name)
-    @events.each do |event|
+    events.each do |event|
       return true if event.name == event_name
     end
     false
   end
 
   def delete_event!(event_name)
-    @events.each do |event|
+    events.each do |event|
       if event.name == event_name
-        @events.delete(event)
+        events.delete(event)
         return true
       end
     end

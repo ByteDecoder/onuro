@@ -2,6 +2,7 @@
 
 require 'onuro/version'
 require 'onuro/engine'
+require 'onuro/event'
 require 'onuro/base_rule'
 require 'onuro/execution_result'
 require 'onuro/logging'
@@ -11,6 +12,5 @@ module Onuro
   class InvalidEventNameException < StandardError; end
 
   # Your code goes here...
-  Event = Struct.new(:name, :rules)
-  Rule = Struct.new(:rule, :enabled, :order)
+  RuleStage = Struct.new(:rule, :enabled, :order)
 end
