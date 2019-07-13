@@ -5,8 +5,7 @@ module Onuro
     include Logging
     include ExecutionResult
 
-    attr_reader :name
-    attr_accessor :ruleset
+    attr_reader :name, :ruleset_stage
 
     def name=(name)
       raise InvalidEventNameException if name.empty?
@@ -14,18 +13,19 @@ module Onuro
       @name = name.downcase.to_sym
     end
 
-    def initialize(name, ruleset = [])
+    def initialize(name, ruleset_stage = [])
       self.name = name
-      self.ruleset = ruleset
+      @ruleset_stage = ruleset_stage
     end
 
-    def add_rule(rule_stage)
-      ruleset << rule_stage
+    def add_rule_stage(rule_stage)
+      ruleset_stage << rule_stage
     end
 
     def execute(context = {})
       rules_processed = 0
-      ruleset.each do |rule_stage|
+
+      ruleset_stage.each do |rule_stage|
         rule_stage.rule.new.execute(context)
         rules_processed += 1
       end
