@@ -5,6 +5,7 @@ require 'onuro/execution_result'
 module Onuro
   class BaseRule
     include ExecutionResult
+    include Onuro::Logging
 
     def execute(_context = {})
       SUCCESSFUL
