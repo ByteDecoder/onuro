@@ -6,7 +6,7 @@ module Onuro
   class BaseRule
     include ExecutionResult
 
-    def execute
+    def execute(_context = {})
       SUCCESSFUL
     end
   end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Onuro::Engine
+  attr_reader :events
+
   def initialize
     @events = []
   end
@@ -26,7 +28,7 @@ class Onuro::Engine
     raise Onuro::InvalidEventNameException
   end
 
-  def execute
+  def execute(_context = {})
     ['Still WIP']
   end
 end
