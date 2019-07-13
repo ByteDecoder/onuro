@@ -5,8 +5,8 @@ require 'onuro'
 module Onuro
   RSpec.describe Engine do
     describe '.execute' do
-      it 'should execute sucessfully' do
-        expect { Engine.new.execute }.to_not raise_error
+      it 'should not execute successfully if event is not registered in the engine' do
+        expect { Engine.new.execute(:legion_rule) }.to raise_error(InvalidEventNameException)
       end
     end
 
