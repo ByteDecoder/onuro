@@ -7,28 +7,20 @@ module Onuro
     attr_accessor :events
 
     def initialize
-      self.events = []
+      self.events = Hash.new(0)
     end
 
     def add_event(event)
-      events << event
+      events[event.name] = event
     end
 
     def event?(event_name)
-      events.each do |event|
-        return true if event.name == event_name
-      end
-      false
+      events.key?(event_name)
     end
 
     def delete_event!(event_name)
-      events.each do |event|
-        if event.name == event_name
-          events.delete(event)
-          return true
-        end
-      end
-      raise InvalidEventNameException
+      result = events.delete(event_name)
+      raise InvalidEventNameException unless result
     end
 
     def execute(_context = {})

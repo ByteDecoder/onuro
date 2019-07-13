@@ -4,7 +4,12 @@ module Onuro
   class Event
     include Logging
 
-    attr_accessor :name, :ruleset
+    attr_reader :name
+    attr_accessor :ruleset
+
+    def name=(name)
+      @name = name.downcase.to_sym
+    end
 
     def initialize(name, ruleset)
       self.name = name
