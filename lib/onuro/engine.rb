@@ -31,8 +31,6 @@ module Onuro
   end
 end
 
-# excetue results
-
 # allow to extend event base, in order give the user to calculate the
 # result bassed onuser execution rules status. like the Dp use customs hacks
 # to track in the db which rules already was executed.
