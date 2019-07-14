@@ -22,7 +22,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Engine
+
+### Rule
+
+### RuleStage
+
+### Events
+
+Events are the component that hold an *rulset stage* composed of a list of rules and their settings for execution. The easiest way to define and event is creating the instance object always with the event name required. In order to create complex events with more settings, take a look to the *Event Builder* section.
+
+```ruby
+event = Event.new(:my_event)
+engine.add_event(event)
+engine.execute(:my_event)
+```
+
+### Event Builder
+
+An easier way to create an event, is using the **EventBuilder*** class based on the *builder pattern*. This gives a lot of flexibility when you are creating the events and avoid having a lot or parameters in the constructor and assembling  all the event internals, and easy to to be plugged in you **Engine** class instance.
+
+```ruby
+event = EventBuilder.build(:test_ruleset) do |builder|
+          builder.add_ruleset_stage([rule1, rule2, rule3])
+          builder.add_event_strategy(MyCustomEventStrategy)
+          builder.exec_order(:desc)
+          buidler.ignore_diseabled
+        end
+
+engine.add_event(event)
+engine.execute(:test_ruleset)
+```
+
+### Event Strategies
+
+Events allow you to implement your custom strategy, to control what happens before and after the rule is executed in the event. By default Onuro provides a default strategy:
+
+```ruby
+module Onuro
+  class DefaultEventStrategy
+    def before_rule_exec(_rule_stage, _context)
+      true
+    end
+
+    def after_rule_exec(_rule_stage, _context, _result)
+      true
+    end
+  end
+end
+```
+
+You only need to implement the methods **before_rule_exec** and **after_rule_exec** in your custom class returning a boolean value. Basically, this is the *strategy pattern*.
+
+If **before_rule_exec** returns false, skip the current rule execution and move to the next one in the ruleset list.
 
 ## Development
 

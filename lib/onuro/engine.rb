@@ -12,6 +12,12 @@ module Onuro
 
     def add_event(event)
       events[event.name] = event
+      self
+    end
+
+    def add_events(new_events)
+      new_events.each { |event| add_event(event) }
+      self
     end
 
     def event?(event_name)
@@ -30,8 +36,3 @@ module Onuro
     end
   end
 end
-
-# allow to extend event base, in order give the user to calculate the
-# result bassed onuser execution rules status. like the Dp use customs hacks
-# to track in the db which rules already was executed.
-# using the Decorator Pattern

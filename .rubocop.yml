@@ -1,3 +1,6 @@
+require:
+  - rubocop-rspec
+  
 Metrics/LineLength:
   Max: 100
 
@@ -9,3 +12,6 @@ Rails/Output:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 30

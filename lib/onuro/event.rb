@@ -6,6 +6,7 @@ module Onuro
     include ExecutionResult
 
     attr_reader :name, :ruleset_stage
+    attr_accessor :event_strategy
 
     def name=(name)
       raise InvalidEventNameException if name.empty?
@@ -13,9 +14,14 @@ module Onuro
       @name = name.downcase.to_sym
     end
 
-    def initialize(name, ruleset_stage = [])
+    def initialize(name, ruleset_stage: [], event_strategy: DefaultEventStrategy.new)
       self.name = name
+      self.event_strategy = event_strategy
       @ruleset_stage = ruleset_stage
+    end
+
+    def add_ruleset_stage(ruleset_stage)
+      @ruleset_stage += ruleset_stage
     end
 
     def add_rule_stage(rule_stage)
@@ -23,17 +29,33 @@ module Onuro
     end
 
     def execute(context = {})
-      rules_processed = 0
+      result = execution_flow(context)
+      execution_result(SUCCESSFUL, result[:processed], result[:failed])
+    end
 
-      ruleset_stage.each do |rule_stage|
-        rule_stage.rule.new.execute(context)
-        rules_processed += 1
-      end
+    private
 
+    def execution_result(status, processed, failed)
       result = Hash.new(0)
-      result[:status] = SUCCESSFUL
+      result[:status] = status
       result[:event_name] = name
-      result[:rules_processed] = rules_processed
+      result[:processed_rules] = processed
+      result[:failed_rules] = failed
+      result
+    end
+
+    def execution_flow(context = {})
+      result = Hash.new(0)
+      ruleset_stage.each do |rule_stage|
+        proc_exec = event_strategy.before_rule_exec(rule_stage, context)
+        next unless proc_exec
+
+        result_status = rule_stage.rule.new.execute(context)
+        event_strategy.after_rule_exec(rule_stage, context, result)
+
+        result[:processed] += 1 if result_status == SUCCESSFUL
+        result[:failed] += 1 if result_status == FAILURE
+      end
       result
     end
   end

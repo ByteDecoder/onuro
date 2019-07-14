@@ -13,7 +13,7 @@ module Onuro
 
   RSpec.describe TestRule do
     describe '.execute' do
-      it 'should return SUCCESSFUL and log the info' do
+      it 'returns SUCCESSFUL and log the info' do
         result = TestRule.new.execute(legion: 'HeavenFall')
         expect(result).to eq(ExecutionResult::SUCCESSFUL)
       end
@@ -22,7 +22,7 @@ module Onuro
 
   RSpec.describe BaseRule do
     describe '.execute' do
-      it 'should return SUCCESSFUL' do
+      it 'returns SUCCESSFUL' do
         result = BaseRule.new.execute
         expect(result).to eq(ExecutionResult::SUCCESSFUL)
       end
