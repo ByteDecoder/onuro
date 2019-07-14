@@ -32,7 +32,7 @@ module Onuro
 
     def self.build(name)
       builder = new(name)
-      yield builder
+      yield builder if block_given?
       builder.event
     end
   end
