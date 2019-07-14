@@ -40,12 +40,12 @@ engine.execute(:my_event)
 
 ### Event Builder
 
-An easier way to create an event, is using the **EventBuilder*** class based on the *builder pattern*. This gives a lot of flexibility when you are creating the events and avoid having a lot or parameters in the constructor and assembling  all the event internals, and easy to to be plugged in you **Engine** class instance.
+An easier way to create an event, is using the **EventBuilder** class based on the *builder pattern*. This gives a lot of flexibility when you are creating the events and avoid having a lot or parameters in the constructor and assembling  all the event internals, and easy to to be plugged in you **Engine** class instance.
 
 ```ruby
 event = EventBuilder.build(:test_ruleset) do |builder|
           builder.add_ruleset_stage([rule1, rule2, rule3])
-          builder.add_event_strategy(MyCustomEventStrategy)
+          builder.add_event_strategy(MyCustomEventStrategy.new)
           builder.exec_order(:desc)
           buidler.ignore_diseabled
         end
