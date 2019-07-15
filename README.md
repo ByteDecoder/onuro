@@ -199,9 +199,15 @@ If **before_rule_exec** returns false, skip the current rule execution and move 
 
 ### ExecutionResult
 
+TBD
+
 ### Determining succcess or failure of the event processing
 
+TBD
+
 ### Logging
+
+TBD
 
 ## Development
 
