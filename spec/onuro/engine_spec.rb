@@ -41,8 +41,8 @@ module Onuro
     end
 
     describe '.add_events' do
-      let(:event1) { Event.new(:event_one) }
-      let(:event2) { Event.new(:event_two) }
+      let(:event1) { Event.new(:event_engine_one) }
+      let(:event2) { Event.new(:event_engine_two) }
 
       it 'as collection of events into the engine instance' do
         engine = Engine.new.add_events([event1, event2])
