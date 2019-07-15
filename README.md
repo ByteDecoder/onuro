@@ -28,7 +28,9 @@ The easiest way to load Event + Rules configuration in the **Engine** is using t
 class Rule1 < Onuro::BaseRule; end
 class Rule2 < Onuro::BaseRule; end
 class Rule3 < Onuro::BaseRule; end
-class MyCustomEventStrategy < Onuro::DefaultEventStrategy; end
+class MyCustomEventStrategy < Onuro::DefaultEventStrategy
+  # override here the methods to execute your custom logic before/after each rule
+end
 
 
 Onuro::Engine.configure do |config|
