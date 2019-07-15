@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-The easiest way to load Event + Rules configuration in the **Engine** is using the configuration blocks. Its important to mention these global pre-configured events, would be changed when in runt-time an **engine instance** is begin fetched with new events.
+The easiest way to load *Events + Rules* configuration in the **Engine** is using the configuration blocks. Its important to mention these global pre-configured events, would not be changed when in runt-time an **engine instance** is begin fetched with new events.
 
 ```ruby
 class Rule1 < Onuro::BaseRule; end
