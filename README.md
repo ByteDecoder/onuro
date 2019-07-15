@@ -22,6 +22,43 @@ Or install it yourself as:
 
 ## Usage
 
+The easiest way to load Event + Rules configuration in the **Engine** is using the configuration blocks. Its important to mention these global pre-configured events, would be changed when in runt-time an **engine instance** is begin fetched with new events.
+
+```ruby
+class Rule1 < Onuro::BaseRule; end
+class Rule2 < Onuro::BaseRule; end
+class Rule3 < Onuro::BaseRule; end
+class MyCustomEventStrategy < Onuro::DefaultEventStrategy; end
+
+
+Onuro::Engine.configure do |config|
+  config.add_event(:event_one) do |event|
+    event.add_ruleset_stage [
+      Onuro::RuleStage.new(rule: Rule1, enabled: true, order: 1),
+      Onuro::RuleStage.new(rule: Rule3, enabled: true, order: 2)
+    ]
+    event.add_event_strategy(MyCustomEventStrategy.new)
+    event.exec_order(:desc)
+    event.ignore_diseabled
+  end
+
+  config.add_event(:event_two) do |event|
+    event.add_ruleset_stage [
+      Onuro::RuleStage.new(rule: Rule1, enabled: true, order: 1),
+      Onuro::RuleStage.new(rule: Rule2, enabled: true, order: 2)
+    ]
+  end
+
+  config.add_event(:event_three) do |event|
+    event.add_ruleset_stage [Onuro::RuleStage.new(rule: Rule1, enabled: true, order: 1)]
+  end
+
+  config.add_event(:event_four) do |event|
+    event.add_rule_stage Onuro::RuleStage.default_ruleset_stage_factory([Rule1, Rule2, Rule3])
+  end
+end
+```
+
 ### Engine
 
 ### Rule

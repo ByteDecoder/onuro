@@ -9,5 +9,15 @@ module Onuro
       @enabled = enabled
       @order = order
     end
+
+    def self.default_ruleset_stage_factory(rules)
+      ruleset_stage = []
+      order = 1
+      rules.each do |rule|
+        ruleset_stage << RuleStage.new(rule: rule, enabled: true, order: order)
+        order += 1
+      end
+      ruleset_stage
+    end
   end
 end
