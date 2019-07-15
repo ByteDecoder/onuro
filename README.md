@@ -60,7 +60,8 @@ Onuro::Engine.configure do |config|
   end
 end
 
-# When the *engine object is created, will fetch the pre-configured events for instant use, saving the boilerplate object setup for your common events and rule sets.
+# When the *engine object is created, will fetch the pre-configured events for instant use,
+# saving the boilerplate object setup for your common events and rule sets.
 engine = Onuro::Engine.new.execute(:event_four)
 ```
 
