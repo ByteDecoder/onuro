@@ -32,7 +32,7 @@ class MyCustomEventStrategy < Onuro::DefaultEventStrategy
   # override here the methods to execute your custom logic before/after each rule
 end
 
-
+# Onuro::Engine configuration block
 Onuro::Engine.configure do |config|
   config.add_event(:event_one) do |event|
     event.add_ruleset_stage [
@@ -56,9 +56,12 @@ Onuro::Engine.configure do |config|
   end
 
   config.add_event(:event_four) do |event|
-    event.add_rule_stage Onuro::RuleStage.default_ruleset_stage_factory([Rule1, Rule2, Rule3])
+    event.add_ruleset_stage Onuro::RuleStage.default_ruleset_stage_factory([Rule1, Rule2, Rule3])
   end
 end
+
+# When the *engine object is created, will fetch the pre-configured events for instant use, saving the boilerplate object setup for your common events and rule sets.
+engine = Onuro::Engine.new.execute(:event_four)
 ```
 
 ### Engine

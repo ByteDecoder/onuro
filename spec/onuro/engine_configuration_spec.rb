@@ -54,7 +54,7 @@ class EngineTest
       end
 
       config.add_event(:event_four) do |event|
-        event.add_rule_stage Onuro::RuleStage.default_ruleset_stage_factory([Rule1, Rule2, Rule3])
+        event.add_ruleset_stage Onuro::RuleStage.default_ruleset_stage_factory([Rule1, Rule2, Rule3])
       end
     end
   end
