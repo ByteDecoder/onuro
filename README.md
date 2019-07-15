@@ -62,7 +62,7 @@ end
 
 # When the *engine object is created, will fetch the pre-configured events for instant use,
 # saving the boilerplate object setup for your common events and rule sets.
-engine = Onuro::Engine.new.execute(:event_four)
+exec_result = Onuro::Engine.new.execute(:event_four)
 ```
 
 ### Engine
