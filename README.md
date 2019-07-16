@@ -218,3 +218,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ByteDecoder/onuro.
+
+
+Copyright (c) 2019 [Rodrigo Reyes](https://twitter.com/bytedecoder) released under the MIT license
