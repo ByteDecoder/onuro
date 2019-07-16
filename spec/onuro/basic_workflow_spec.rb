@@ -12,7 +12,12 @@ module Onuro
   end
 
   RSpec.describe 'Basic Workflow Test' do
-    subject { engine.execute(:test_ruleset, legion: true, inmortal: true) }
+    subject do
+      engine.execute(:test_ruleset) do |context|
+        context.add(:legion, true)
+        context.add(:inmortal, true)
+      end
+    end
 
     let(:engine) { Engine.new }
     let(:rule1) { RuleStage.new(rule: Rule1, enabled: true, order: 1) }
