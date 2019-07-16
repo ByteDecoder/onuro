@@ -2,7 +2,7 @@
 
 module Onuro
   class Event
-    include Logging
+    include Loggable
     include ExecutionResult
 
     attr_reader :name, :ruleset_stage

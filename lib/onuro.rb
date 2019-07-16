@@ -2,7 +2,7 @@
 
 require 'onuro/version'
 require 'onuro/execution_result'
-require 'onuro/logging'
+require 'onuro/loggable'
 require 'onuro/engine_configuration'
 require 'onuro/context_builder'
 require 'onuro/context'

@@ -2,7 +2,7 @@
 
 module Onuro
   class Engine
-    include Logging
+    include Loggable
 
     attr_accessor :events
 

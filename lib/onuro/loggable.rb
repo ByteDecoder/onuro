@@ -3,9 +3,9 @@
 require 'active_support/logger'
 
 module Onuro
-  module Logging
+  module Loggable
     def logger
-      Logging.logger
+      Loggable.logger
     end
 
     # Global, memoized, lazy initialized instance of a logger

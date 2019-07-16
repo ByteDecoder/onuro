@@ -3,7 +3,7 @@
 module Onuro
   class BaseRule
     include ExecutionResult
-    include Logging
+    include Loggable
 
     def execute(_context = {})
       SUCCESSFUL
