@@ -21,6 +21,7 @@ RSpec.describe Onuro::Engine do
   it 'when creation Engine class, should load all the events defined in the Global Configuration' do
     engine = described_class.new
     expect(engine.events.size).to eq(4)
+    expect(engine.execute(:event_one)[:status]).to eq(Onuro::ExecutionResult::SUCCESSFUL)
   end
 end
 

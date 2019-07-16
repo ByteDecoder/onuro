@@ -67,9 +67,10 @@ module Onuro
       raise InvalidEventNameException unless result
     end
 
-    def execute(event_name, context = {})
+    def execute(event_name, context = Context.new)
       raise InvalidEventNameException unless event?(event_name)
 
+      context.data.merge! ContextBuilder.build.data
       events[event_name].execute(context)
     end
   end
