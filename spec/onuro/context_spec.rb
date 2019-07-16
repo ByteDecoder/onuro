@@ -18,5 +18,12 @@ module Onuro
       end
       expect(context.data.size).to eq(2)
     end
+
+    it 'creates valid entries with index accessors' do
+      context = Context.new
+      context[:param1] = 'param1'
+      context[:param2] = 'param2'
+      expect(context.data.size).to eq(2)
+    end
   end
 end
