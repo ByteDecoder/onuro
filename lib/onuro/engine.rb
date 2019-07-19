@@ -48,6 +48,10 @@ module Onuro
       self.events = Engine.configuration.events.clone
     end
 
+    def self.instance
+      new
+    end
+
     def add_event(event)
       events[event.name] = event
       self
