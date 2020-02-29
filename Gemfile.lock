@@ -27,7 +27,7 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     rainbow (3.0.0)
-    rake (12.3.2)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -69,7 +69,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   coderay (~> 1.1)
   onuro!
-  rake (~> 12.3)
+  rake (~> 13.0)
   rspec (~> 3.8)
   rubocop (~> 0.71.0)
   rubocop-rspec (~> 1.33)
