@@ -12,6 +12,13 @@ module Onuro
   end
 
   RSpec.describe TestRule do
+    let(:logger) { instance_double 'ActiveSupport::Logger' }
+
+    before do
+      allow(ActiveSupport::Logger).to receive(:new).and_return(logger)
+      allow(logger).to receive(:info)
+    end
+
     describe '.execute' do
       it 'returns SUCCESSFUL and log the info' do
         result = TestRule.new.execute(legion: 'HeavenFall')
