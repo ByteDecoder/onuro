@@ -1,3 +1,4 @@
+![Ruby](https://github.com/ByteDecoder/onuro/workflows/Ruby/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/adf3d29832220efbd6fc/maintainability)](https://codeclimate.com/github/ByteDecoder/onuro/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/adf3d29832220efbd6fc/test_coverage)](https://codeclimate.com/github/ByteDecoder/onuro/test_coverage)
 # Onuro
