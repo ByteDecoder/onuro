@@ -10,6 +10,7 @@ module Onuro
       raise NotImplementedError
     end
   end
+  
   class DefaultEventStrategy < EventStrategyBase
     def before_rule_exec(_rule_stage, _context)
       true
